@@ -4,7 +4,7 @@ import {toolbox} from './toolbox'
 export default function Lab() {
   return (
     <CodeOrg
-      header={<Header toolbar={<span>TOOLBAR</span>} />}
+      header={<Header toolbar={<span>TOOL BAR</span>} />}
       blockWorkspace={<BlockWorkspace blocklyOptions={{toolbox}} />}
       output={<Output />}
     />
