@@ -5,6 +5,7 @@
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bookworm",
 	"forwardPorts": [9001],
 	"postCreateCommand": "yarn install",
+	"postStartCommand": "yarn dev",
 
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 
