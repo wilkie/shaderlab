@@ -7,4 +7,6 @@ export default defineConfig({
   server: {
     port: 9001,
   },
+  // Use a relative path in generated HTML, absolute / doesn't work with github pages:
+  base: "",
 });
