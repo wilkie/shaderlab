@@ -19,9 +19,29 @@ export function CodeOrg({
   )
 }
 
-export function Header({children=<span></span>}) {
+export function Header({toolbar=<span></span>}) {
   const HEADER_HEIGHT = 42
   const HORIZONTAL_SPACING = 16
+
+  function Protolab() {
+    return (
+      <div style={{
+        height: HEADER_HEIGHT,
+        display: 'inline-block',
+        float: 'right',
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: HEADER_HEIGHT,
+      }}>
+        Protolab
+        <img src={protolabLogo} alt="Protolab logo" style={{
+          width: HEADER_HEIGHT,
+          height: HEADER_HEIGHT,
+          marginRight: HORIZONTAL_SPACING,
+        }}/>
+      </div>
+    )
+  }
 
   const headerStyle = {
     height: HEADER_HEIGHT,
@@ -44,23 +64,9 @@ export function Header({children=<span></span>}) {
         overflow: 'hidden',
         marginLeft: HORIZONTAL_SPACING,
       }}>
-        {children}
+        {toolbar}
       </div>
-      <div style={{
-        height: HEADER_HEIGHT,
-        display: 'inline-block',
-        float: 'right',
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: HEADER_HEIGHT,
-      }}>
-        Prototype
-        <img src={protolabLogo} alt="Protolab logo" style={{
-          width: HEADER_HEIGHT,
-          height: HEADER_HEIGHT,
-          marginRight: HORIZONTAL_SPACING,
-        }}/>
-      </div>
+      <Protolab />
     </div>
   )
 }
@@ -68,10 +74,11 @@ export function Header({children=<span></span>}) {
 export function Blocks() {
   return (
     <div className="blocks" style={{
-      backgroundColor: 'green',
+      backgroundColor: '#f0f0f0',
       height: '100%',
+      padding: 16,
     }}>
-      Drag blocks here
+      BLOCKS
     </div>
   )
 }
@@ -79,10 +86,11 @@ export function Blocks() {
 export function Output() {
   return (
     <div className="output" style={{
-      backgroundColor: 'yellow',
+      backgroundColor: '#fff',
       height: '100%',
+      padding: 16,
     }}>
-      Output goes here
+      OUTPUT
     </div>
   )
 }
