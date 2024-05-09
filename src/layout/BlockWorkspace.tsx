@@ -5,7 +5,7 @@ interface BlocksProps {
   blocklyOptions?: Blockly.BlocklyOptions;
 }
 
-export const Blocks: React.FC<BlocksProps> = ({blocklyOptions={}}) => {
+export const BlockWorkspace: React.FC<BlocksProps> = ({blocklyOptions={}}) => {
   const blocklyRef = useRef(null)
 
   blocklyOptions = {
@@ -45,7 +45,7 @@ export const Blocks: React.FC<BlocksProps> = ({blocklyOptions={}}) => {
         workspace.dispose()
       }
     }
-  }, [])
+  }, [blocklyOptions])
 
   return (
     <div ref={blocklyRef} style={{

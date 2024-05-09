@@ -1,24 +1,11 @@
-import {CodeOrg, Blocks, Header, Output} from './layout/CodeOrg'
-
-const toolbox = {
-  "kind": "flyoutToolbox",
-  "contents": [
-    {
-      "kind": "block",
-      "type": "controls_if"
-    },
-    {
-      "kind": "block",
-      "type": "controls_whileUntil"
-    }
-  ]
-}
+import {CodeOrg, BlockWorkspace, Header, Output} from './layout/CodeOrg'
+import {toolbox} from './toolbox'
 
 export default function Lab() {
   return (
     <CodeOrg
       header={<Header toolbar={<span>TOOLBAR</span>} />}
-      blocks={<Blocks blocklyOptions={{toolbox}} />}
+      blockWorkspace={<BlockWorkspace blocklyOptions={{toolbox}} />}
       output={<Output />}
     />
   )

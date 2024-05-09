@@ -1,22 +1,22 @@
-import {Blocks} from './Blocks'
+import {BlockWorkspace} from './BlockWorkspace'
 import SplitPane from 'react-split-pane'
 
 import codeOrgLogo from './code.org.svg'
 import protolabLogo from '/protolab.svg'
 import './resizer.css'
 
-export {Blocks}
+export {BlockWorkspace}
 
 export function CodeOrg({
   header = <Header />,
-  blocks = <Blocks />,
+  blockWorkspace = <BlockWorkspace />,
   output = <Output />
 }) {
   return (
     <>
       {header}
       <SplitPane>
-        {blocks}
+        {blockWorkspace}
         {output}
       </SplitPane>
     </>
