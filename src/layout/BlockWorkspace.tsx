@@ -5,6 +5,11 @@ interface BlocksProps {
   blocklyOptions?: Blockly.BlocklyOptions;
 }
 
+/*
+const state = Blockly.serialization.workspaces.save(myWorkspace);
+Blockly.serialization.workspaces.load(state, myWorkspace);
+*/
+
 export const BlockWorkspace: React.FC<BlocksProps> = ({blocklyOptions={}}) => {
   const blocklyRef = useRef(null)
 
