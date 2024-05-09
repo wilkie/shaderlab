@@ -1,7 +1,11 @@
+import {Blocks} from './Blocks'
+import SplitPane from 'react-split-pane'
+
 import codeOrgLogo from './code.org.svg'
 import protolabLogo from '/protolab.svg'
-import SplitPane from 'react-split-pane'
 import './resizer.css'
+
+export {Blocks}
 
 export function CodeOrg({
   header = <Header />,
@@ -67,18 +71,6 @@ export function Header({toolbar=<span></span>}) {
         {toolbar}
       </div>
       <Protolab />
-    </div>
-  )
-}
-
-export function Blocks() {
-  return (
-    <div className="blocks" style={{
-      backgroundColor: '#f0f0f0',
-      height: '100%',
-      padding: 16,
-    }}>
-      BLOCKS
     </div>
   )
 }
