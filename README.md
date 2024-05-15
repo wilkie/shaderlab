@@ -2,7 +2,7 @@
 
 To start the dev server: `yarn dev`, then open http://localhost:9001
 
-## Building a Protolab
+## Forking a new Protolab
 
 Lets say you'd like to prototype a new protolab called `newlab`:
 
@@ -14,10 +14,8 @@ Lets say you'd like to prototype a new protolab called `newlab`:
 1. **Enable GitHub actions**, to automatically build your repo on push
   ![Enable Github Actions](./docs/img/enable-github-actions.png)
 
-
 1. **Enable GitHub Pages**, by setting Deployment Source to Github Actions
   ![Enable Github Pages](./docs/img/enable-github-pages.png)
-
 
 1. **Create a codespace** or clone locally
   ![Create Codespace](./docs/img/create-codespace.png)
