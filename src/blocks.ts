@@ -72,14 +72,6 @@ const blocks = defineBlock(
   }
 );
 
-@blockly({
-  color: hue(160),
-  tooltip: "Returns number of letters in the provided text."
-})
-function stringLength(value: string): number {
-  return value.length;
-}
-
 const here = defineBlock(
   "here",
   (block, generator) => {
