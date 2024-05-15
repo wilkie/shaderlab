@@ -18,8 +18,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "paths": {
+      "libprotolab/*": ["./libprotolab/*"],
+    }
   },
-  "include": ["src"],
+  "include": ["src", "libprotolab"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
