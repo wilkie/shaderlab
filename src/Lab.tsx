@@ -1,4 +1,4 @@
-import {CodeOrg, BlockWorkspace, Header, Output} from '../libprotolab/layout/CodeOrg'
+import {CodeOrg, BlockWorkspace, Header, Output} from 'libprotolab/layout/CodeOrg'
 import {blocklyOptions} from './blocks'
 import {save, load, run} from 'libprotolab/blockly/workspace'
 
