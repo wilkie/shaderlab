@@ -1,5 +1,6 @@
 import { BlocklyOptions } from "blockly";
 import { ToolboxDefinition } from "blockly/core/utils/toolbox";
+
 import {
   includeStockCategories,
   StockCategory,
