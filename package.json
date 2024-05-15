@@ -13,7 +13,8 @@
     "blockly": "^10.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-split-pane": "^0.1.92"
+    "react-split-pane": "^0.1.92",
+    "rrweb": "^2.0.0-alpha.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
