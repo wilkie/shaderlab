@@ -7,6 +7,11 @@
 	"postCreateCommand": "yarn install",
 	"postStartCommand": "nohup bash -c 'yarn dev &'",
 
+	"extensions": [
+		"GitHub.vscode-github-actions",
+		"esbenp.prettier-vscode",
+	],
+
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
