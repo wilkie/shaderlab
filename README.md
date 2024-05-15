@@ -1,6 +1,28 @@
 # Protolab
 
-To start the dev server: `yarn dev`, then open http://localhost:9001
+The idea behind protolab is you fork this repo, and it provides a quick starting point for
+hacking together ideas for new labs, initially focusing on block-based labs. You can see what an
+empty protolab looks like here: https://code-dot-org.github.io/protolab/.
+
+Currently:
+- Vite-based for fast builds, rebuilds, and react refresh
+- A backend-less URL you can share with testers
+- Easy pattern to get started with: see [Lab.tsx](./src/Lab.tsx)
+- Relatively simple to add new blocks: see [blocks.ts](./src/blocks.ts)
+- Includes GitHub Actions that publish changes to github.io whenever you push
+- Includes a GitHub codespace, so you can do quick development without a local clone
+- Saves and loads blockly workspaces to localStorage, 
+- When testers access your protolab on its github.io address, their sessions are "screen recorded" to highlight.io
+
+Planned:
+- Baked-in patterns for lab output based on: react, canvas, p5 and babylon.js
+- Local download/restore of blockly saves as a .json file, so they can be shared
+
+## Dev
+
+1. yarn install (not required in codespace)
+1. yarn dev
+1. Open: http://localhost:9001
 
 ## Forking a new Protolab
 
