@@ -11,14 +11,14 @@ export {BlockWorkspace}
 
 export function CodeOrg({
   header = <Header />,
-  blockWorkspace = <BlockWorkspace />,
+  workspace = <BlockWorkspace />,
   output = <Output />
 }) {
   return (
     <>
       {header}
       <SplitPane>
-        {blockWorkspace}
+        {workspace}
         {output}
       </SplitPane>
     </>

@@ -1,5 +1,5 @@
 import {CodeOrg, BlockWorkspace, Header, Output} from '../libprotolab/layout/CodeOrg'
-import {toolbox} from './toolbox'
+import {blocklyOptions} from './blocks'
 
 export const LAB_NAME = "Protolab"
 
@@ -21,7 +21,7 @@ export function Lab() {
   return (
     <CodeOrg
       header={<Header toolbar=<Toolbar/> />}
-      blockWorkspace={<BlockWorkspace blocklyOptions={{toolbox}} />}
+      workspace={<BlockWorkspace blocklyOptions={blocklyOptions} />}
       output={<Output />}
     />
   )
