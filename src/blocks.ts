@@ -1,11 +1,89 @@
-import { BlocklyOptions } from "blockly";
-import { ToolboxDefinition } from "blockly/core/utils/toolbox";
+import { defineBlock } from "libprotolab/blockly/define-block";
+import type { BlocklyOptions } from "blockly";
+import type { ToolboxDefinition } from "blockly/core/utils/toolbox";
 
 import {
   includeStockCategories,
   StockCategory,
 } from "libprotolab/blockly/stockBlocks";
 import { getLabName } from "libprotolab/lab-name";
+
+const your = defineBlock(
+  "your",
+  (block, generator) => {
+    const value = generator.valueToCode(block, "VALUE", 0);
+    return [`(${value}).length`, 0];
+  },
+  {
+    message: "your",
+    output: "Number",
+    colour: 160,
+    tooltip: "Returns number of letters in the provided text.",
+  }
+);
+
+const custom = defineBlock(
+  "custom",
+  (block, generator) => {
+    const value = generator.valueToCode(block, "VALUE", 0);
+    return [`(${value}).length`, 0];
+  },
+  {
+    message0: "custom %1",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+        check: "String",
+      },
+    ],
+    output: "Number",
+    colour: 160,
+    tooltip: "Returns number of letters in the provided text.",
+  }
+);
+
+const blocks = defineBlock(
+  "blocks",
+  (block, generator) => {
+    const value = generator.valueToCode(block, "VALUE", 0);
+    return [`(${value}).length`, 0];
+  },
+  {
+    message0: "blocks %1",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+        check: "String",
+      },
+    ],
+    output: "Number",
+    colour: 160,
+    tooltip: "Returns number of letters in the provided text.",
+  }
+);
+
+const here = defineBlock(
+  "here",
+  (block, generator) => {
+    const value = generator.valueToCode(block, "VALUE", 0);
+    return [`(${value}).length`, 0];
+  },
+  {
+    message0: "here %1",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+        check: "String",
+      },
+    ],
+    output: "Number",
+    colour: 160,
+    tooltip: "Returns number of letters in the provided text.",
+  }
+);
 
 export const toolbox: ToolboxDefinition = {
   kind: "categoryToolbox",
@@ -15,18 +93,10 @@ export const toolbox: ToolboxDefinition = {
       name: getLabName(),
       categorystyle: "logic_category",
       contents: [
-        {
-          kind: "block",
-          type: "controls_if",
-        },
-        {
-          kind: "block",
-          type: "logic_compare",
-        },
-        {
-          kind: "block",
-          type: "controls_whileUntil",
-        },
+        your,
+        custom,
+        blocks,
+        here,
       ],
     },
     ...includeStockCategories([
@@ -40,7 +110,6 @@ export const toolbox: ToolboxDefinition = {
     ]),
   ],
 };
-
 
 // For options, see: https://developers.google.com/blockly/reference/js/blockly.blocklyoptions_interface
 export const blocklyOptions: BlocklyOptions = {
