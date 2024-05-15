@@ -23,7 +23,8 @@ const your = defineBlock(
         check: "String",
       },
     ],
-    output: "Number",
+    nextStatement: null,
+    previousStatement: null,
     colour: 160,
     tooltip: "Returns number of letters in the provided text.",
   }
@@ -70,6 +71,14 @@ const blocks = defineBlock(
     tooltip: "Returns number of letters in the provided text.",
   }
 );
+
+@blockly({
+  color: hue(160),
+  tooltip: "Returns number of letters in the provided text."
+})
+function stringLength(value: string): number {
+  return value.length;
+}
 
 const here = defineBlock(
   "here",
