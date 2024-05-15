@@ -1,6 +1,6 @@
 import {CodeOrg, BlockWorkspace, Header, Output} from '../libprotolab/layout/CodeOrg'
 import {toolbox} from './toolbox'
-import { DownloadRecordingLink } from '../libprotolab/session-recorder'
+import {DownloadRecordingLink} from '../libprotolab/session-recorder'
 
 export const LAB_NAME = "Protolab"
 
