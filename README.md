@@ -1,6 +1,6 @@
 # Protolab
 
-The idea behind protolab is you fork this repo, and it provides a skaffold for
+The idea behind protolab is you fork this repo, and it provides a scaffold for
 hacking together ideas new lab ideas, initially focusing on block-based labs. You can see what an
 empty protolab looks like here: https://code-dot-org.github.io/protolab/.
 
