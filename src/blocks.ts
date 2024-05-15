@@ -4,13 +4,14 @@ import {
   includeStockCategories,
   StockCategory,
 } from "libprotolab/blockly/stockBlocks";
+import { getLabName } from "libprotolab/lab-name";
 
 export const toolbox: ToolboxDefinition = {
   kind: "categoryToolbox",
   contents: [
     {
       kind: "category",
-      name: "My Blocks",
+      name: getLabName(),
       categorystyle: "logic_category",
       contents: [
         {
@@ -40,8 +41,7 @@ export const toolbox: ToolboxDefinition = {
 };
 
 
-// See: https://developers.google.com/blockly/reference/js/blockly.blocklyoptions_interface
+// For options, see: https://developers.google.com/blockly/reference/js/blockly.blocklyoptions_interface
 export const blocklyOptions: BlocklyOptions = {
   toolbox,
-  trashcan: false,
 };
