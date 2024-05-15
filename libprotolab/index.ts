@@ -17,7 +17,7 @@ export function init(Lab: React.FC, labName: string) {
   }
 
   if (import.meta.env.MODE === "production") {
-    console.info("Session recording is enabled, recorded sessions can be viewed at https://app.highlight.io using your @code.org login.")
+    console.info(`Session recording is enabled, recorded sessions can be viewed at https://app.highlight.io/61436/sessions?page=1&query=service_name%20%3D%20${labName} using your @code.org login.`)
     setupSessionRecording(labName)
   } else {
     console.info("Session recording is disabled in development mode.")
