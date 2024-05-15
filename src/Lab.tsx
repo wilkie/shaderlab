@@ -1,6 +1,6 @@
 import {CodeOrg, BlockWorkspace, Header, Output} from '../libprotolab/layout/CodeOrg'
 import {blocklyOptions} from './blocks'
-
+import {save, load, run} from 'libprotolab/blockly/workspace'
 export const LAB_NAME = "Protolab"
 
 function Toolbar() {
@@ -11,8 +11,10 @@ function Toolbar() {
   }
   return (
     <div style={toolbarStyle}>
-      <button>Run</button>
+      <button onClick={() => run()}>Run</button>
       <button>Reset</button>
+      <button onClick={() => save()}>Save</button>
+      <button onClick={() => load()}>Load</button>
     </div>
   )
 }
