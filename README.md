@@ -1,30 +1,25 @@
 # Protolab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Starting a protolab
 
-Currently, two official plugins are available:
+1. `yarn dev`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Building a Protolab
 
-## Expanding the ESLint configuration
+Lets say you'd like to prototype a new protolab called `newlab`:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Fork Protolab** to your GitHub account
+   1. Open: https://github.com/code-dot-org/protolab, click the Fork button
+   1. Select yourself as the owner, repository name: `newlab`, click Create Fork
+   1. After the fork completes, you'll be taken to your new GitHub repo: https://github.com/username/newlab
 
-- Configure the top-level `parserOptions` property like this:
+1. **Enable GitHub actions**, to automatically build your repo on push
+  ![Enable Github Actions](./docs/img/enable-github-actions.png)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. **Create a codespace** or clone locally
+  ![Create Codespace](./docs/img/create-codespace.png)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. **Make a source change**
+   1. Edit `src/Lab.tsx` and change `LAB_NAME` to `newlab`
+   1. Commit the change and push it
+   1. GitHub Actions will build on push and about 1 minute later, you can **view your changes** on: https://username.github.io/newlab
