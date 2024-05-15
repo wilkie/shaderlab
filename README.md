@@ -1,8 +1,6 @@
 # Protolab
 
-## Starting a protolab
-
-1. `yarn dev`
+To start the dev server: `yarn dev`, then open http://localhost:9001
 
 ## Building a Protolab
 
@@ -21,5 +19,8 @@ Lets say you'd like to prototype a new protolab called `newlab`:
 
 1. **Make a source change**
    1. Edit `src/Lab.tsx` and change `LAB_NAME` to `newlab`
-   1. Commit the change and push it
-   1. GitHub Actions will build on push and about 1 minute later, you can **view your changes** on: https://username.github.io/newlab
+   1. Commit the change, and push it back to your repo
+   1. GitHub Actions will build on push, you can find active builds at: https://github.com/username/newlab/actions
+   1. About 1 minute later, you can **view your changes** on: https://username.github.io/newlab
+
+1. When you're ready to collaborate with others, **Fork Protolab** back to the code-dot-org organization
