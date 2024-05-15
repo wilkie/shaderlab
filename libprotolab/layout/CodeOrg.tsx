@@ -1,4 +1,4 @@
-import {BlockWorkspace} from './BlockWorkspace'
+import {BlocklyWorkspace} from './BlocklyWorkspace'
 import SplitPane from 'react-split-pane'
 
 import codeOrgLogo from './code.org.svg'
@@ -7,11 +7,11 @@ import './resizer.css'
 
 import { getLabName } from 'libprotolab/lab-name'
 
-export {BlockWorkspace}
+export {BlocklyWorkspace as BlockWorkspace}
 
 export function CodeOrg({
   header = <Header />,
-  workspace = <BlockWorkspace />,
+  workspace = <BlocklyWorkspace />,
   output = <Output />
 }) {
   return (
