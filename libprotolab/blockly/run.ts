@@ -3,11 +3,8 @@ import { getWorkspace } from "./workspace";
 
 export function run() {
   const workspace = getWorkspace()
-  console.log(javascriptGenerator);
-  console.log(workspace);
   javascriptGenerator.addReservedWords("code");
-  const code = javascriptGenerator(workspace);
-  console.log(code);
+  const code = javascriptGenerator.workspaceToCode(workspace);
   try {
     eval(code);
   } catch (e) {

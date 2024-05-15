@@ -14,7 +14,6 @@ export function getWorkspace() {
 
 export function save(saveName: string = "workspace") {
   const state = Blockly.serialization.workspaces.save(getWorkspace());
-  console.log("State is: ", state, "Workspace is: ", getWorkspace(), "Save name is: ", saveName);
   localStorage.setItem(saveName, JSON.stringify(state));
 }
 
