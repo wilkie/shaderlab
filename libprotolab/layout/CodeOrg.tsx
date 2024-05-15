@@ -5,6 +5,8 @@ import codeOrgLogo from './code.org.svg'
 import protolabLogo from '/protolab.svg'
 import './resizer.css'
 
+import { getLabName } from 'libprotolab/lab-name'
+
 export {BlockWorkspace}
 
 export function CodeOrg({
@@ -37,7 +39,7 @@ export function Header({toolbar=<span></span>}) {
         fontWeight: 'bold',
         fontSize: HEADER_HEIGHT,
       }}>
-        Protolab
+        {getLabName()}
         <img src={protolabLogo} alt="Protolab logo" style={{
           width: HEADER_HEIGHT,
           height: HEADER_HEIGHT,
