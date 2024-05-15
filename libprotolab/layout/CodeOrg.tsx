@@ -17,7 +17,8 @@ export function CodeOrg({
   return (
     <>
       {header}
-      <SplitPane>
+      {/* @ts-expect-error see https://github.com/tomkp/react-split-pane/issues/826 */}
+      <SplitPane primary="second" minSize={300}>
         {workspace}
         {output}
       </SplitPane>
