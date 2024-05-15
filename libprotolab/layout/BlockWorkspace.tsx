@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import Blockly from 'blockly'
+import { setWorkspace } from 'libprotolab/blockly/workspace';
 
 interface BlocksProps {
   blocklyOptions?: Blockly.BlocklyOptions;
@@ -14,8 +15,8 @@ export const BlockWorkspace: React.FC<BlocksProps> = ({blocklyOptions={}}) => {
   const blocklyRef = useRef(null)
 
   blocklyOptions = {
-    scrollbars: false,
-    trashcan: true,
+    scrollbars: true,
+    trashcan: false,
     // collapse: true,
     // comments: true,
     // sounds: false,
@@ -41,6 +42,7 @@ export const BlockWorkspace: React.FC<BlocksProps> = ({blocklyOptions={}}) => {
 
     if (blocklyRef.current) {
       workspace = Blockly.inject(blocklyRef.current, blocklyOptions)
+      setWorkspace(workspace)
       const resizeObserver = new ResizeObserver(() => Blockly.svgResize(workspace!));
       resizeObserver.observe(blocklyRef.current);  
     }
