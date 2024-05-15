@@ -15,7 +15,14 @@ const your = defineBlock(
     return [`(${value}).length`, 0];
   },
   {
-    message: "your",
+    message0: "your %1",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+        check: "String",
+      },
+    ],
     output: "Number",
     colour: 160,
     tooltip: "Returns number of letters in the provided text.",
