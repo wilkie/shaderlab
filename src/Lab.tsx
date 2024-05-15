@@ -1,14 +1,19 @@
 import {CodeOrg, BlockWorkspace, Header, Output} from '../libprotolab/layout/CodeOrg'
 import {toolbox} from './toolbox'
-import {DownloadRecordingLink} from '../libprotolab/session-recorder'
 
 export const LAB_NAME = "Protolab"
 
 function Toolbar() {
+  const toolbarStyle = {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    gap: 4,
+  }
   return (
-    <span>
-      <DownloadRecordingLink />
-    </span>
+    <div style={toolbarStyle}>
+      <button>Run</button>
+      <button>Reset</button>
+    </div>
   )
 }
 
