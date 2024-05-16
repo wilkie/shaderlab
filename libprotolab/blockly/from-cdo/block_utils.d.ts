@@ -62,8 +62,13 @@ type BlockDefinition = {
   style?: string;
 };
 
+type BlockName = string;
+type BlockNamesByCategory = {
+  [category: string]: BlockName[];
+};
+
 export function installCustomBlocks(args: {
   blockly: typeof Blockly;
   blockDefinitions: BlockDefinition[];
   customInputTypes: InputTypes;
-}): any;
+}): BlockNamesByCategory;

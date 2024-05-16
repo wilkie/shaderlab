@@ -1,5 +1,5 @@
 import { installCustomBlocks } from "./from-cdo/block_utils";
-import type { InputTypes, BlockDefinition } from "./from-cdo/block_utils";
+import type { InputTypes, BlockDefinition, BlockNamesByCategory } from "./from-cdo/block_utils";
 
 import Blockly from "blockly";
 
@@ -32,16 +32,42 @@ const customInputTypes: InputTypes = {
 };
 
 const blockDefinitions: BlockDefinition[] = [
-
+  {
+    func: "makeBurst",
+    inline: true,
+    blockText: "create {EFFECT} effect with {NUM} {ANIMATION_NAME} sprites",
+    style: "sprite_blocks",
+    args: [
+      {
+        name: "NUM",
+        type: "Number",
+      },
+      {
+        name: "ANIMATION_NAME",
+        customInput: "costumePicker",
+      },
+      {
+        name: "EFFECT",
+        options: [
+          ["burst", '"burst"'],
+          ["pop", '"pop"'],
+          ["rain", '"rain"'],
+          ["spiral", '"spiral"'],
+        ],
+      },
+    ],
+  },
 ];
 
-export function defineBlocksInPoolStyle() {
-  const blocksByCategory = installCustomBlocks({
+export function defineBlocksInPoolStyle({blockDefinitions, customInputTypes}: {
+  blockDefinitions: BlockDefinition[];
+  customInputTypes: InputTypes;
+}) : BlockNamesByCategory {
+  return installCustomBlocks({
     blockly: Blockly,
     blockDefinitions,
     customInputTypes,
   });
-  return blocksByCategory;
 }
 
 // FIXME: remove debug code
