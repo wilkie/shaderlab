@@ -37,6 +37,14 @@ type InputTypes = {
 };
 
 type BlockDefinition = {
+  categor?: string;
+  config: BlockConfig;
+  helperCode?: string;
+  name: string;
+  pool?: string;
+}
+
+type BlockConfig = {
   color?: number[]; // HSV block color as a 3-element number array
   func?: string; // For function/method calls, the function name
   expression?: string; // Instead of specifying func, use this param to specify an arbitrary javascript expression
