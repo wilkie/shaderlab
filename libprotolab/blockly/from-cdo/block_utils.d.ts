@@ -40,7 +40,7 @@ type BlockDefinition = {
   categor?: string;
   config: BlockConfig;
   helperCode?: string;
-  name: string;
+  name?: string;
   pool?: string;
 }
 

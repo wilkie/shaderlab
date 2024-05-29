@@ -1,5 +1,6 @@
 import Blockly, { Block } from "blockly";
 import { JavascriptGenerator, javascriptGenerator } from "blockly/javascript";
+export { defineBlocksInPoolStyle } from "./define-blocks-in-pool-style";
 
 type BlocklyJSGenerator = (block: Block, generator: JavascriptGenerator) => any;
 

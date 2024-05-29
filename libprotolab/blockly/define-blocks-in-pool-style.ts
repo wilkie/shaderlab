@@ -3,6 +3,7 @@ import type { InputTypes, BlockDefinition, BlockNamesByCategory } from "./from-c
 
 import Blockly from "blockly";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const customInputTypes: InputTypes = {
   spritePicker: {
     addInput(_blockly, block, inputConfig, currentInputRow) {
@@ -31,31 +32,38 @@ const customInputTypes: InputTypes = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const blockDefinitions: BlockDefinition[] = [
   {
-    func: "makeBurst",
-    inline: true,
-    blockText: "create {EFFECT} effect with {NUM} {ANIMATION_NAME} sprites",
-    style: "sprite_blocks",
-    args: [
-      {
-        name: "NUM",
-        type: "Number",
-      },
-      {
-        name: "ANIMATION_NAME",
-        customInput: "costumePicker",
-      },
-      {
-        name: "EFFECT",
-        options: [
-          ["burst", '"burst"'],
-          ["pop", '"pop"'],
-          ["rain", '"rain"'],
-          ["spiral", '"spiral"'],
-        ],
-      },
-    ],
+    // category: "Logic",
+    // name: "makeBurst",
+    pool: "protolab",
+    // helperCode: "makeBurst",
+    config: {
+      func: "makeBurst",
+      inline: true,
+      blockText: "create {EFFECT} effect with {NUM} {ANIMATION_NAME} sprites",
+      style: "sprite_blocks",
+      args: [
+        {
+          name: "NUM",
+          type: "Number",
+        },
+        {
+          name: "ANIMATION_NAME",
+          customInput: "spritePicker",
+        },
+        {
+          name: "EFFECT",
+          options: [
+            ["burst", '"burst"'],
+            ["pop", '"pop"'],
+            ["rain", '"rain"'],
+            ["spiral", '"spiral"'],
+          ],
+        },
+      ],
+    },
   },
 ];
 
@@ -63,6 +71,7 @@ export function defineBlocksInPoolStyle({blockDefinitions, customInputTypes}: {
   blockDefinitions: BlockDefinition[];
   customInputTypes: InputTypes;
 }) : BlockNamesByCategory {
+
   return installCustomBlocks({
     blockly: Blockly,
     blockDefinitions,
@@ -72,3 +81,7 @@ export function defineBlocksInPoolStyle({blockDefinitions, customInputTypes}: {
 
 // FIXME: remove debug code
 (window as any).defineBlocksInPoolStyle = defineBlocksInPoolStyle;
+(window as any).defineBlocksInPoolStyleResult = defineBlocksInPoolStyle({
+  blockDefinitions,
+  customInputTypes,
+});
