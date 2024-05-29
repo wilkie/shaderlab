@@ -3,6 +3,9 @@
 import Blockly from "blockly";
 import cdoBlockStyles from './cdoBlockStyles';
 
+import { javascriptGenerator } from "blockly/javascript";
+Blockly.JavaScript = javascriptGenerator;
+
 export const EMPTY_OPTION = '???';
 
 const styleTypes = Object.keys(cdoBlockStyles);
@@ -359,7 +362,7 @@ export const createJsWrapperBlockCreator = function (
 ) {
   const { ORDER_FUNCTION_CALL, ORDER_MEMBER, ORDER_NONE } = Blockly.JavaScript;
 
-  const generator = blockly.getGenerator();
+  const generator = javascriptGenerator;
 
   const inputTypes = {
     ...STANDARD_INPUT_TYPES,
@@ -693,12 +696,13 @@ export const installCustomBlocks = function ({
   const createJsWrapperBlock = createJsWrapperBlockCreator(
     blockly,
     [
-      // Strict Types
-      blockly.BlockValueType.SPRITE,
-      blockly.BlockValueType.BEHAVIOR,
-      blockly.BlockValueType.LOCATION,
+      // // Strict Types
+      // blockly.BlockValueType.SPRITE,
+      // blockly.BlockValueType.BEHAVIOR,
+      // blockly.BlockValueType.LOCATION,
     ],
-    blockly.BlockValueType.SPRITE,
+    null,
+    // blockly.BlockValueType.SPRITE,
     customInputTypes
   );
 
