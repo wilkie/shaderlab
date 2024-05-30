@@ -1,11 +1,8 @@
 import {
   defineBlocksInPoolStyle,
-} from "libprotolab/blockly/define-block";
-
-import type {
   InputTypes,
   BlockDefinition,
-} from "libprotolab/blockly/define-block";
+} from "libprotolab/blockly";
 
 import Blockly from "blockly";
 

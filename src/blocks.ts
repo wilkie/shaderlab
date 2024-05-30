@@ -1,12 +1,12 @@
-import { defineBlock } from "libprotolab/blockly/define-block";
-import type { BlocklyOptions } from "blockly";
-import type { ToolboxDefinition } from "blockly/core/utils/toolbox";
+import { defineBlock, BlocklyOptions, ToolboxDefinition } from "libprotolab/blockly";
 
 import {
   includeStockCategories,
   StockCategory,
 } from "libprotolab/blockly/stockBlocks";
 import { getLabName } from "libprotolab/lab-name";
+
+import './pool-style-blocks'
 
 const your = defineBlock(
   "your",
