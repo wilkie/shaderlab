@@ -1,20 +1,33 @@
-import { alertBlock, toUpperCaseBlock, alertBlock2, here } from "./blocks";
+// Organize blocks as category folders
+import category1Blocks from "./category1";
+
+// Or import block by block
+import {alert2Block} from "./alert2Block";
+
+import "./pool-style-blocks";
 
 import { ToolboxDefinition } from "libprotolab/blockly";
 import {
   includeStockCategories,
   StockCategory,
 } from "libprotolab/blockly/stockBlocks";
-import { getLabName } from "libprotolab/lab-name";
 
 export const toolbox: ToolboxDefinition = {
   kind: "categoryToolbox",
   contents: [
     {
       kind: "category",
-      name: getLabName(),
+      name: "Category 1",
       categorystyle: "logic_category",
-      contents: [alertBlock, toUpperCaseBlock, alertBlock2, here],
+      contents: category1Blocks,
+    },
+    {
+      kind: "category",
+      name: "Category 2",
+      categorystyle: "logic_category",
+      contents: [
+        alert2Block,
+      ],
     },
     // You can add/remove specific stock block categories here
     // or remove this line to disable all stock blocks
