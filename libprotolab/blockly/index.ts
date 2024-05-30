@@ -3,4 +3,6 @@ export { defineBlock } from "./define-block";
 export { defineBlocksInPoolStyle } from "./define-blocks-in-pool-style";
 
 export type { BlocklyOptions } from "blockly";
+export {Order} from "blockly/javascript";
+
 export type { ToolboxDefinition } from "blockly/core/utils/toolbox";

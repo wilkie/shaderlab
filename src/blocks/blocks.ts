@@ -1,11 +1,15 @@
-import { defineBlock } from "libprotolab/blockly";
+import { defineBlock, Order } from "libprotolab/blockly";
 
 import "./pool-style-blocks";
 
-export const alert = defineBlock(
+// This is an example of a `statement` block with one input:
+// https://developers.google.com/blockly/guides/create-custom-blocks/code-generation/statements/basic-implementation
+export const alertBlock = defineBlock(
   "alert",
   (block, generator) => {
     const value = generator.valueToCode(block, "VALUE", 0);
+
+    // Statement blocks are just a string of the JS you want to generate
     return `alert(${value})`;
   },
   {
@@ -24,14 +28,19 @@ export const alert = defineBlock(
   }
 );
 
-export const custom = defineBlock(
-  "custom",
+// This is an example of a `value` block with one input:
+// https://developers.google.com/blockly/guides/create-custom-blocks/code-generation/values/basic-implementation
+export const toUpperCaseBlock = defineBlock(
+  "toUpperCase",
   (block, generator) => {
     const value = generator.valueToCode(block, "VALUE", 0);
-    return [`(${value}).length`, 0];
+
+    // Value blocks require both the generated JS, and specifying an operator precedence:
+    // https://developers.google.com/blockly/guides/create-custom-blocks/code-generation/values/operator-precedence
+    return [`(${value}).toUpperCase()`, Order.NONE];
   },
   {
-    message0: "custom %1",
+    message0: "toUpperCase %1",
     args0: [
       {
         type: "input_value",
@@ -39,9 +48,9 @@ export const custom = defineBlock(
         check: "String",
       },
     ],
-    output: "Number",
+    output: "String",
     colour: 160,
-    tooltip: "Returns number of letters in the provided text.",
+    tooltip: "Converts the provided text to uppercase.",
   }
 );
 
