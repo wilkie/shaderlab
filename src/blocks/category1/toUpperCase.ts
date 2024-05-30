@@ -17,6 +17,8 @@ export const toUpperCaseBlock = defineBlock({
       .setCheck("String")
       .appendField("toUpperCase");
 
+    block.setOutput(true, "String");
+
     block.setColour(160);
     block.setTooltip("Display an alert box with the provided text.");
   },
