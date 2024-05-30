@@ -2,14 +2,14 @@ import { defineBlock } from "libprotolab/blockly";
 
 import "./pool-style-blocks";
 
-export const your = defineBlock(
-  "your",
+export const alert = defineBlock(
+  "alert",
   (block, generator) => {
     const value = generator.valueToCode(block, "VALUE", 0);
-    return [`(${value}).length`, 0];
+    return `alert(${value})`;
   },
   {
-    message0: "your %1",
+    message0: "alert %1",
     args0: [
       {
         type: "input_value",
@@ -20,7 +20,7 @@ export const your = defineBlock(
     nextStatement: null,
     previousStatement: null,
     colour: 160,
-    tooltip: "Returns number of letters in the provided text.",
+    tooltip: "Display an alert box with the provided text.",
   }
 );
 

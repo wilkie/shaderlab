@@ -1,4 +1,4 @@
-import { your, custom, blocks, here } from "./blocks";
+import { alert, custom, blocks, here } from "./blocks";
 
 import { ToolboxDefinition } from "libprotolab/blockly";
 import {
@@ -14,7 +14,7 @@ export const toolbox: ToolboxDefinition = {
       kind: "category",
       name: getLabName(),
       categorystyle: "logic_category",
-      contents: [your, custom, blocks, here],
+      contents: [alert, custom, blocks, here],
     },
     // You can add/remove specific stock block categories here
     // or remove this line to disable all stock blocks
