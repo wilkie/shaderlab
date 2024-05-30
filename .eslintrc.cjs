@@ -14,7 +14,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    // This makes prototyping a lot harder:
+    // no-explicit-any makes prototyping a lot harder:
     '@typescript-eslint/no-explicit-any': 'off',
   },
 }
