@@ -37,7 +37,7 @@ type InputTypes = {
 };
 
 type BlockDefinition = {
-  categor?: string;
+  category?: string;
   config: BlockConfig;
   helperCode?: string;
   name?: string;
