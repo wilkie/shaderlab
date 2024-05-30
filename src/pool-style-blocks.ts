@@ -6,6 +6,7 @@ import {
 
 import Blockly from "blockly";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const customInputTypes: InputTypes = {
   spritePicker: {
     addInput(_blockly, block, inputConfig, currentInputRow) {

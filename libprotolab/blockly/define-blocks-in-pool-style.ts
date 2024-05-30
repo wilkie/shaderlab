@@ -14,6 +14,3 @@ export function defineBlocksInPoolStyle({blockDefinitions, customInputTypes}: {
     customInputTypes,
   });
 }
-
-// FIXME: remove debug code
-(window as any).defineBlocksInPoolStyle = defineBlocksInPoolStyle;

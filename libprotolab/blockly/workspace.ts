@@ -1,9 +1,6 @@
 import Blockly from "blockly";
 export { run } from './run'
 
-// Set window.Blockly for easy debugging / hacking
-(window as any).Blockly ||= Blockly;
-
 let workspace: Blockly.Workspace | null = null;
 
 export function setWorkspace(_workspace: Blockly.Workspace) {
