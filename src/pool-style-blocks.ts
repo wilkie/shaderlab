@@ -74,3 +74,5 @@ console.log("Loading pool-style-blocks");
 
 const categoryToBlockName = defineBlocksInPoolStyle({blockDefinitions, customInputTypes});
 export default categoryToBlockName;
+
+console.log("Loaded pool-style-blocks: ", categoryToBlockName);

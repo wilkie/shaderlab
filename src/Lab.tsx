@@ -1,4 +1,4 @@
-import {CodeOrg, BlockWorkspace, Header, Output} from 'libprotolab/layout/CodeOrg'
+import {CodeOrg, BlockWorkspace, Header} from 'libprotolab/layout/CodeOrg'
 import {blocklyOptions} from './blocks'
 import {save, load, run} from 'libprotolab/blockly/workspace'
 
@@ -16,9 +16,16 @@ const Toolbar = () =>
     <button onClick={() => load()}>Load</button>
   </div>
 
+const Output = () =>
+  <div>Output</div>
+
+const Instructions = () =>
+  <div>Instructions</div>
+
 export const Lab = () =>
   <CodeOrg
     header={<Header toolbar=<Toolbar/> />}
     workspace={<BlockWorkspace blocklyOptions={blocklyOptions} />}
-    output={<Output />}
+    output={<Output/>}
+    instructions={<Instructions/>}
   />

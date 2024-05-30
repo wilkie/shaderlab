@@ -12,15 +12,21 @@ export {BlocklyWorkspace as BlockWorkspace}
 export function CodeOrg({
   header = <Header />,
   workspace = <BlocklyWorkspace />,
-  output = <Output />
+  output = <div>OUTPUT</div>,
+  instructions = <div>INSTRUCTIONS</div>,
 }) {
   return (
     <>
       {header}
       {/* @ts-expect-error see https://github.com/tomkp/react-split-pane/issues/826 */}
-      <SplitPane primary="second" minSize={300}>
+      <SplitPane split="vertical" primary="first" defaultSize={400}>
+        {/* @ts-expect-error see https://github.com/tomkp/react-split-pane/issues/826 */}
+        <SplitPane split="horizontal" defaultSize={400}>
+          <div className="output">{output}</div>
+          <div className="instructions">{instructions}</div>
+        </SplitPane>
+        
         {workspace}
-        {output}
       </SplitPane>
     </>
   )
@@ -74,18 +80,6 @@ export function Header({toolbar=<span></span>}) {
         {toolbar}
       </div>
       <Protolab />
-    </div>
-  )
-}
-
-export function Output() {
-  return (
-    <div className="output" style={{
-      backgroundColor: '#fff',
-      height: '100%',
-      padding: 16,
-    }}>
-      OUTPUT
     </div>
   )
 }
