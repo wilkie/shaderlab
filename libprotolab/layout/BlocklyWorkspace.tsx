@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import Blockly from 'blockly'
-import { setWorkspace } from 'libprotolab/blockly/workspace';
+import { setWorkspace } from 'libprotolab/blockly/workspace/';
 
 interface BlocksProps {
   blocklyOptions?: Blockly.BlocklyOptions;

@@ -1,5 +1,4 @@
 import Blockly from "blockly";
-export { run } from './run'
 
 const DEFAULT_SAVE_NAME = "default";
 
@@ -35,7 +34,7 @@ export function load() {
   if (state) {
     Blockly.serialization.workspaces.load(JSON.parse(state), getWorkspace());
   } else {
-    alert(`Couldn't find a saved workspace named: ${saveName}`)
+    alert(`Couldn't find a saved workspace named: ${saveName}`);
   }
 }
 
