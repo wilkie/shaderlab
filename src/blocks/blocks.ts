@@ -1,14 +1,8 @@
-import { defineBlock, BlocklyOptions, ToolboxDefinition } from "libprotolab/blockly";
+import { defineBlock } from "libprotolab/blockly";
 
-import {
-  includeStockCategories,
-  StockCategory,
-} from "libprotolab/blockly/stockBlocks";
-import { getLabName } from "libprotolab/lab-name";
+import "./pool-style-blocks";
 
-import './pool-style-blocks'
-
-const your = defineBlock(
+export const your = defineBlock(
   "your",
   (block, generator) => {
     const value = generator.valueToCode(block, "VALUE", 0);
@@ -30,7 +24,7 @@ const your = defineBlock(
   }
 );
 
-const custom = defineBlock(
+export const custom = defineBlock(
   "custom",
   (block, generator) => {
     const value = generator.valueToCode(block, "VALUE", 0);
@@ -51,7 +45,7 @@ const custom = defineBlock(
   }
 );
 
-const blocks = defineBlock(
+export const blocks = defineBlock(
   "blocks",
   (block, generator) => {
     const value = generator.valueToCode(block, "VALUE", 0);
@@ -72,7 +66,7 @@ const blocks = defineBlock(
   }
 );
 
-const here = defineBlock(
+export const here = defineBlock(
   "here",
   (block, generator) => {
     const value = generator.valueToCode(block, "VALUE", 0);
@@ -92,34 +86,3 @@ const here = defineBlock(
     tooltip: "Returns number of letters in the provided text.",
   }
 );
-
-export const toolbox: ToolboxDefinition = {
-  kind: "categoryToolbox",
-  contents: [
-    {
-      kind: "category",
-      name: getLabName(),
-      categorystyle: "logic_category",
-      contents: [
-        your,
-        custom,
-        blocks,
-        here,
-      ],
-    },
-    ...includeStockCategories([
-      StockCategory.Logic,
-      StockCategory.Loops,
-      StockCategory.Math,
-      StockCategory.Text,
-      StockCategory.Lists,
-      StockCategory.Variables,
-      StockCategory.Functions,
-    ]),
-  ],
-};
-
-// For options, see: https://developers.google.com/blockly/reference/js/blockly.blocklyoptions_interface
-export const blocklyOptions: BlocklyOptions = {
-  toolbox,
-};

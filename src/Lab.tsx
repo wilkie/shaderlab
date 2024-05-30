@@ -1,5 +1,5 @@
 import {CodeOrg, BlockWorkspace, Header} from 'libprotolab/layout/CodeOrg'
-import {blocklyOptions} from './blocks'
+import {blocklyOptions} from './blocks/'
 import {save, load, run} from 'libprotolab/blockly/workspace'
 
 export const LAB_NAME = "Protolab"
