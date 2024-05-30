@@ -14,21 +14,32 @@ export type JSStatement = JSCodeString;
 // define a JS statement, or a JS value.
 export type BlocklyJSGenerator = (block: Block, generator: JavascriptGenerator) => JSValue | JSStatement;
 
+export type BlockJSON = object;
+export type InitializerFunc = (block: Block) => void;
+
 export function defineBlock(
-  blockType: string,
+  type: string,
   jsGenerator: BlocklyJSGenerator,
-  blockJSON: object,
+  definition: BlockJSON | InitializerFunc
 ) {
-  blockJSON = { ...blockJSON, type: blockType };
-  Blockly.Blocks[blockType] = {
-    init: function () {
-      this.jsonInit(blockJSON);
-    },
-  };
-  javascriptGenerator[blockType] = jsGenerator;
+  if (definition instanceof Function) {
+    Blockly.Blocks[type] = {
+      init: function () {
+        definition(this);
+      },
+    };
+  } else {
+    const blockJSON = { ...definition, type: type };
+    Blockly.Blocks[type] = {
+      init: function () {
+        this.jsonInit(blockJSON);
+      },
+    };
+  }
+  javascriptGenerator[type] = jsGenerator;
 
   return {
     kind: "block",
-    type: blockType,
-  }
+    type: type,
+  };
 }

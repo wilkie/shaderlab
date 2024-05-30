@@ -54,24 +54,26 @@ export const toUpperCaseBlock = defineBlock(
   }
 );
 
-export const blocks = defineBlock(
-  "blocks",
+// This is an example of a `statement` block with one input:
+// https://developers.google.com/blockly/guides/create-custom-blocks/code-generation/statements/basic-implementation
+export const alertBlock2 = defineBlock(
+  "alert",
   (block, generator) => {
     const value = generator.valueToCode(block, "VALUE", 0);
-    return [`(${value}).length`, 0];
+
+    // Statement blocks are just a string of the JS you want to generate
+    return `alert(${value})`;
   },
-  {
-    message0: "blocks %1",
-    args0: [
-      {
-        type: "input_value",
-        name: "VALUE",
-        check: "String",
-      },
-    ],
-    output: "Number",
-    colour: 160,
-    tooltip: "Returns number of letters in the provided text.",
+  function (block) {
+    block.appendValueInput("VALUE")
+      .setCheck("String")
+      .appendField("alert2");
+
+    block.setPreviousStatement(true);
+    block.setNextStatement(true);
+
+    block.setColour(160);
+    block.setTooltip("Display an alert box with the provided text.");
   }
 );
 

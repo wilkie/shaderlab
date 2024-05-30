@@ -1,4 +1,4 @@
-import { alertBlock, toUpperCaseBlock, blocks, here } from "./blocks";
+import { alertBlock, toUpperCaseBlock, alertBlock2, here } from "./blocks";
 
 import { ToolboxDefinition } from "libprotolab/blockly";
 import {
@@ -14,7 +14,7 @@ export const toolbox: ToolboxDefinition = {
       kind: "category",
       name: getLabName(),
       categorystyle: "logic_category",
-      contents: [alertBlock, toUpperCaseBlock, blocks, here],
+      contents: [alertBlock, toUpperCaseBlock, alertBlock2, here],
     },
     // You can add/remove specific stock block categories here
     // or remove this line to disable all stock blocks
