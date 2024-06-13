@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@blockly/field-colour": "^5.0.2",
     "@highlight-run/react": "^3.2.2",
     "blockly": "^10.4.3",
+    "glsl-canvas-js": "^0.2.9",
     "highlight.run": "^8.12.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

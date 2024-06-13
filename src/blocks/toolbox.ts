@@ -1,8 +1,8 @@
 // Organize blocks as category folders
-import category1Blocks from "./category1";
+//import category1Blocks from "./category1";
 
 // Or import block by block
-import {alert2Block} from "./alert2Block";
+//import {alert2Block} from "./alert2Block";
 
 import "./pool-style-blocks";
 
@@ -12,9 +12,37 @@ import {
   StockCategory,
 } from "libprotolab/blockly/stockBlocks";
 
+import {registerFieldColour} from '@blockly/field-colour';
+registerFieldColour();
+
+import { startBlock } from "./start";
+import { setColorBlock } from "./setColor";
+import { colorBlock } from "./color";
+import { sampleBlock } from "./sample";
+import { lengthBlock } from "./length";
+import { textureBlock } from "./texture";
+import { uvBlock } from "./uv";
+import { timeBlock } from "./time";
+
 export const toolbox: ToolboxDefinition = {
   kind: "categoryToolbox",
   contents: [
+    {
+      kind: "category",
+      name: "Category 2",
+      categorystyle: "logic_category",
+      contents: [
+        startBlock,
+        setColorBlock,
+        colorBlock,
+        sampleBlock,
+        lengthBlock,
+        textureBlock,
+        uvBlock,
+        timeBlock,
+      ],
+    },
+    /*
     {
       kind: "category",
       name: "Category 1",
@@ -28,17 +56,17 @@ export const toolbox: ToolboxDefinition = {
       contents: [
         alert2Block,
       ],
-    },
+    },*/
     // You can add/remove specific stock block categories here
     // or remove this line to disable all stock blocks
     ...includeStockCategories([
-      StockCategory.Logic,
-      StockCategory.Loops,
+      //StockCategory.Logic,
+      //StockCategory.Loops,
       StockCategory.Math,
-      StockCategory.Text,
-      StockCategory.Lists,
+      //StockCategory.Text,
+      //StockCategory.Lists,
       StockCategory.Variables,
-      StockCategory.Functions,
+      //StockCategory.Functions,
     ]),
   ],
 };

@@ -22,7 +22,7 @@ export function CodeOrg({
       <SplitPane split="vertical" primary="first" defaultSize={400}>
         {/* @ts-expect-error see https://github.com/tomkp/react-split-pane/issues/826 */}
         <SplitPane split="horizontal" defaultSize={400}>
-          <div className="output">{output}</div>
+          <div className="output" style={{width: '100%'}}>{output}</div>
           <div className="instructions">{instructions}</div>
         </SplitPane>
         
