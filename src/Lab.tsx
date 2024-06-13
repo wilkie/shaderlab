@@ -4,8 +4,11 @@ import {Save, Load, Reset} from 'libprotolab/blockly/workspace/buttons'
 import {glslGenerator} from './generators/glslGenerator'
 import {getWorkspace} from 'libprotolab/blockly/workspace/workspace'
 
+import texture from '../public/texture.jpg'
+
 import * as Blockly from "blockly";
 
+// @ts-ignore 
 import { Canvas } from 'glsl-canvas-js';
 
 function run() {
@@ -16,7 +19,7 @@ function run() {
   const workspace = getWorkspace()
   glslGenerator.init(workspace);
   if (!glslGenerator.nameDB_) {
-    glslGenerator.nameDB_ = new Blockly.Names();
+    glslGenerator.nameDB_ = new Blockly.Names('');
   }
   const code = glslGenerator.workspaceToCode(workspace);
   console.log("code:", code);
@@ -49,7 +52,7 @@ const Output = () =>
   <canvas style={{
     width: '100%',
     height: '100%',
-  }} data-textures="texture.jpg"></canvas>
+  }} data-textures={texture}></canvas>
 
 const Instructions = () =>
   <div>Instructions</div>

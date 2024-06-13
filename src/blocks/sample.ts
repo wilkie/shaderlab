@@ -4,8 +4,7 @@ import { glslGenerator, getValue } from '../generators/glslGenerator'
 
 export const sampleBlock = defineBlock({
   type: "sample",
-  glslGenerator: (block, generator) => {
-  },
+  jsGenerator: (_b, _g) => {return '';},
   blocklyJSON: {
     message0: "sample %1 at %2",
     args0: [{

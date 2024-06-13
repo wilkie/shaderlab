@@ -4,7 +4,7 @@ import { getWorkspace } from 'libprotolab/blockly/workspace/workspace'
 
 export const glslGenerator = new Blockly.Generator("GLSL");
 
-export function getType(value) {
+export function getType(value: any) {
   if (value && value.indexOf(':') >= 0) {
     if (value[0] == '(') {
       value = value.substring(1);
@@ -15,14 +15,14 @@ export function getType(value) {
   return null;
 }
 
-export function coerceType(a, b) {
+export function coerceType(a: any, b: any) {
   const typeA = getType(a);
   const typeB = getType(b);
 
   return typeA || typeB;
 }
 
-export function getValue(value) {
+export function getValue(value: any) {
   if (value.indexOf(':') >= 0) {
     if (value[0] == '(') {
       return '(' + value.substring(value.indexOf(':') + 1);
@@ -65,6 +65,7 @@ export enum Order {
   NONE = 99,             // (...)
 };
 
+// @ts-ignore
 glslGenerator.scrub_ = function(block, code, thisOnly) {
   const nextBlock = block.nextConnection && block.nextConnection.targetBlock();
 
@@ -80,8 +81,8 @@ glslGenerator.scrub_ = function(block, code, thisOnly) {
 }
 
 export function math_single(
-  block: Block,
-  generator: JavascriptGenerator,
+  block: Blockly.Block,
+  generator: Blockly.Generator,
 ): [string, Order] {
   // Math operators with single operand.
   const operator = block.getFieldValue('OP');
@@ -103,7 +104,6 @@ export function math_single(
     arg = generator.valueToCode(block, 'NUM', Order.NONE) || '0.0';
   }
 
-  const argType = getType(arg);
   arg = getValue(arg);
 
   // Ensure it is a float
@@ -177,8 +177,8 @@ glslGenerator.forBlock['math_round'] = math_single;
 glslGenerator.forBlock['math_single'] = math_single;
 
 glslGenerator.forBlock['math_number'] = (
-  block: Block,
-  generator: glslGenerator,
+  block: Blockly.Block,
+  _generator: Blockly.Generator,
 ): [string, Order] => {
   // Numeric value.
   const number = Number(block.getFieldValue('NUM'));
@@ -191,8 +191,8 @@ glslGenerator.forBlock['math_number'] = (
 };
 
 glslGenerator.forBlock['math_arithmetic'] = (
-  block: Block,
-  generator: glslGenerator,
+  block: Blockly.Block,
+  generator: Blockly.Generator,
 ): [string, Order] => {
   // Basic arithmetic operators, and power.
   const OPERATORS: Record<string, [string | null, Order]> = {
@@ -219,26 +219,26 @@ glslGenerator.forBlock['math_arithmetic'] = (
 };
 
 glslGenerator.forBlock['math_constant'] = (
-  block: Block,
-  generator: JavascriptGenerator,
+  block: Blockly.Block,
+  _generator: Blockly.Generator,
 ): [string, Order] => {
   // Constants: PI, E, the Golden Ratio, sqrt(2), 1/sqrt(2), INFINITY.
-  const CONSTANTS: Record<string, [string, Order]> = {
-    'PI': [String(Math.PI), Order.MEMBER],
-    'E': [String(Math.E), Order.MEMBER],
-    'GOLDEN_RATIO': [String((1 + Math.sqrt(5)) / 2), Order.DIVISION],
-    'SQRT2': [String(Math.SQRT2), Order.MEMBER],
-    'SQRT1_2': [String(Math.SQRT1_2), Order.MEMBER],
-    'INFINITY': ['(1. / 0.)', Order.ATOMIC],
+  const CONSTANTS: Record<string, string> = {
+    'PI': String(Math.PI),
+    'E': String(Math.E),
+    'GOLDEN_RATIO': String((1 + Math.sqrt(5)) / 2),
+    'SQRT2': String(Math.SQRT2),
+    'SQRT1_2': String(Math.SQRT1_2),
+    'INFINITY': '(1. / 0.)',
   };
   type ConstantOption = keyof typeof CONSTANTS;
-  return 'float:' + CONSTANTS[block.getFieldValue('CONSTANT') as ConstantOption];
+  return ['float:' + CONSTANTS[block.getFieldValue('CONSTANT') as ConstantOption], Order.ATOMIC];
 };
 
 glslGenerator.forBlock['variables_set'] = (
-  block: Block,
-  generator: glslGenerator,
-): [string, Order] => {
+  block: Blockly.Block,
+  generator: Blockly.Generator,
+): string => {
   const workspace = getWorkspace();
 
   // Variable setter.
@@ -251,6 +251,7 @@ glslGenerator.forBlock['variables_set'] = (
   let variable = workspace.getVariableById(varID);
   const varName = variable?.name;
 
+  // @ts-ignore 
   variable.knownType = type0;
 
   console.log(varName);
@@ -259,14 +260,15 @@ glslGenerator.forBlock['variables_set'] = (
 };
 
 glslGenerator.forBlock['variables_get'] = (
-  block: Block,
-  generator: glslGenerator,
+  block: Blockly.Block,
+  _generator: Blockly.Generator,
 ): [string, Order] => {
   const workspace = getWorkspace();
 
   // Variable setter.
   const varID = block.getFieldValue('VAR');
   let variable = workspace.getVariableById(varID);
+  // @ts-ignore
   const type0 = variable.knownType || 'float';
   const varName = variable?.name;
   return [type0 + ':' + varName, Order.ATOMIC];

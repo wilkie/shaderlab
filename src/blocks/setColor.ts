@@ -4,8 +4,7 @@ import { glslGenerator, getValue } from '../generators/glslGenerator'
 
 export const setColorBlock = defineBlock({
   type: "set_color",
-  glslGenerator: (block, generator) => {
-  },
+  jsGenerator: (_b, _g) => {return '';},
   blocklyJSON: {
     message0: "set color %1",
     args0: [{

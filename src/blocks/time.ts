@@ -4,8 +4,7 @@ import { glslGenerator } from '../generators/glslGenerator'
 
 export const timeBlock = defineBlock({
   type: "time",
-  glslGenerator: (block, generator) => {
-  },
+  jsGenerator: (_b, _g) => {return '';},
   blocklyJSON: {
     message0: 'TIME',
     output: null,
@@ -13,6 +12,6 @@ export const timeBlock = defineBlock({
   }
 });
 
-glslGenerator.forBlock['time'] = (block, generator) => {
+glslGenerator.forBlock['time'] = (_block, _generator) => {
   return ["float:u_time", 0];
 };

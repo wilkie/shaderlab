@@ -4,12 +4,9 @@ import { glslGenerator } from '../generators/glslGenerator'
 
 import { getWorkspace } from 'libprotolab/blockly/workspace/workspace'
 
-import * as Variables from 'libprotolab/blockly/core/variables.js';
-
 export const startBlock = defineBlock({
   type: "start",
-  glslGenerator: (block, generator) => {
-  },
+  jsGenerator: (_b, _g) => {return '';},
   blocklyJSON: {
     message0: "for each pixel",
     colour: 160,
@@ -31,6 +28,7 @@ glslGenerator.forBlock['start'] = (block, generator) => {
   for (const variable of variables) {
     console.log(variable);
     //console.log(glslGenerator.getVariableName(variable));
+    // @ts-ignore
     declarations += (variable.knownType || 'float') + ' ' + variable.name + '; '
   }
 

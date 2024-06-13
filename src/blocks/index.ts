@@ -15,7 +15,7 @@ class GLSLConstantProvider extends Blockly.blockRendering.ConstantProvider {
 
 class GLSLRenderer extends Blockly.blockRendering.Renderer {
   constructor() {
-    super();
+    super('glsl');
   }
 
   /**

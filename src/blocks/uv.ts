@@ -4,8 +4,7 @@ import { glslGenerator } from '../generators/glslGenerator'
 
 export const uvBlock = defineBlock({
   type: "uv",
-  glslGenerator: (block, generator) => {
-  },
+  jsGenerator: (_b, _g) => {return '';},
   blocklyJSON: {
     message0: 'UV',
     output: null,
@@ -13,6 +12,6 @@ export const uvBlock = defineBlock({
   }
 });
 
-glslGenerator.forBlock['uv'] = (block, generator) => {
+glslGenerator.forBlock['uv'] = (_block, _generator) => {
   return ["vec2:(gl_FragCoord.xy / u_resolution.xy)", 0];
 };

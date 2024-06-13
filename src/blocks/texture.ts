@@ -4,8 +4,7 @@ import { glslGenerator } from '../generators/glslGenerator'
 
 export const textureBlock = defineBlock({
   type: "texture",
-  glslGenerator: (block, generator) => {
-  },
+  jsGenerator: (_b, _g) => {return '';},
   blocklyJSON: {
     message0: "texture %1",
     args0: [{
@@ -20,6 +19,6 @@ export const textureBlock = defineBlock({
   }
 });
 
-glslGenerator.forBlock['texture'] = (block, generator) => {
+glslGenerator.forBlock['texture'] = (_block, _generator) => {
   return ['sampler2D:u_texture_0', 0];
 };

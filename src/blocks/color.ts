@@ -4,8 +4,7 @@ import { glslGenerator } from '../generators/glslGenerator'
 
 export const colorBlock = defineBlock({
   type: "color",
-  glslGenerator: (block, generator) => {
-  },
+  jsGenerator: (_b, _g) => {return '';},
   blocklyJSON: {
     kind: 'block',
     message0: 'color: %1',
@@ -19,7 +18,7 @@ export const colorBlock = defineBlock({
   }
 });
 
-glslGenerator.forBlock['color'] = (block, generator) => {
+glslGenerator.forBlock['color'] = (block, _generator) => {
   const color = block.getFieldValue('COLOR');
   // Convert #rrggbb to vec4(...)
   const r = parseInt(color.substring(1, 3), 16) / 255.0;

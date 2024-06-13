@@ -4,8 +4,7 @@ import { glslGenerator, getValue } from '../generators/glslGenerator'
 
 export const lengthBlock = defineBlock({
   type: "length",
-  glslGenerator: (block, generator) => {
-  },
+  jsGenerator: (_b, _g) => {return '';},
   blocklyJSON: {
     message0: "length of %1",
     args0: [{
