@@ -346,3 +346,18 @@ glslGenerator.forBlock['logic_compare'] = (
   const code = getValue(argument0) + ' ' + operator + ' ' + getValue(argument1);
   return [code, order];
 };
+
+export function math_modulo(
+  block: Blockly.Block,
+  generator: Blockly.Generator,
+): [string, Order] {
+  // Remainder computation.
+  const argument0 =
+    generator.valueToCode(block, 'DIVIDEND', Order.MODULUS) || '0';
+  const argument1 =
+    generator.valueToCode(block, 'DIVISOR', Order.MODULUS) || '0';
+  const code = `mod(${getValue(argument0)}, ${getValue(argument1)})`;
+  return [code, Order.MODULUS];
+}
+
+glslGenerator.forBlock['math_modulo'] = math_modulo;

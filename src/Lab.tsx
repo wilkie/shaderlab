@@ -11,6 +11,20 @@ import * as Blockly from "blockly";
 // @ts-ignore 
 import { Canvas } from 'glsl-canvas-js';
 
+async function init_camera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    const video = window.document.querySelector('#web-camera');
+    if (video) {
+      // @ts-ignore 
+      video.srcObject = stream;
+    }
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
 function run() {
   const canvas = document.querySelector('canvas');
   const options = {
@@ -21,8 +35,17 @@ function run() {
   if (!glslGenerator.nameDB_) {
     glslGenerator.nameDB_ = new Blockly.Names('');
   }
-  const code = glslGenerator.workspaceToCode(workspace);
+  const start = workspace.getBlocksByType('start')[0];
+  const code = glslGenerator.blockToCode(start);
   console.log("code:", code);
+
+  if (workspace.getBlocksByType('camera').length > 0) {
+    // Asynchronously start the web camera
+    init_camera();
+    glsl.setUniform('u_texture_0', texture);
+    glsl.setUniform('u_video', '#web-camera');
+  }
+
   try {
     glsl.load(code);
   } catch (e) {
@@ -49,10 +72,13 @@ const Toolbar = () =>
   </div>
 
 const Output = () =>
-  <canvas style={{
-    width: '100%',
-    height: '100%',
-  }} data-textures={texture}></canvas>
+  <>
+    <canvas style={{
+      width: '100%',
+      height: '100%',
+    }} data-textures={texture}></canvas>
+    <video style={{left: '100vw', position: 'relative'}} id='web-camera' playsInline autoPlay></video>
+  </>
 
 const Instructions = () =>
   <div>Instructions</div>

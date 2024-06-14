@@ -22,9 +22,12 @@ import { currentColorBlock } from "./currentColor";
 import { sampleBlock } from "./sample";
 import { lengthBlock } from "./length";
 import { normalizeBlock } from "./normalize";
-import { truncateBlock } from "./vectors";
+import { polarizeBlock } from "./polarize";
+import { centerBlock } from "./center";
+import { truncateBlock, buildVec2Block, buildVec3Block, buildVec4Block, rotateBlock } from "./vectors";
 import { mixBlock } from "./mix";
 import { textureBlock } from "./texture";
+import { cameraBlock } from "./camera";
 import { uvBlock } from "./uv";
 import { timeBlock } from "./time";
 
@@ -42,6 +45,7 @@ export const toolbox: ToolboxDefinition = {
         currentColorBlock,
         sampleBlock,
         textureBlock,
+        cameraBlock,
         uvBlock,
         timeBlock,
       ],
@@ -53,7 +57,13 @@ export const toolbox: ToolboxDefinition = {
       contents: [
         lengthBlock,
         normalizeBlock,
+        polarizeBlock,
+        centerBlock,
         truncateBlock,
+        buildVec2Block,
+        buildVec3Block,
+        buildVec4Block,
+        rotateBlock,
         mixBlock,
       ],
     },
