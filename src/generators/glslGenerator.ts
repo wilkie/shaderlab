@@ -225,6 +225,8 @@ glslGenerator.forBlock['math_constant'] = (
   // Constants: PI, E, the Golden Ratio, sqrt(2), 1/sqrt(2), INFINITY.
   const CONSTANTS: Record<string, string> = {
     'PI': String(Math.PI),
+    'TAU': String(Math.PI * 2.0),
+    'HALF_PI': String(Math.PI / 2.0),
     'E': String(Math.E),
     'GOLDEN_RATIO': String((1 + Math.sqrt(5)) / 2),
     'SQRT2': String(Math.SQRT2),
@@ -273,3 +275,74 @@ glslGenerator.forBlock['variables_get'] = (
   const varName = variable?.name;
   return [type0 + ':' + varName, Order.ATOMIC];
 }
+
+glslGenerator.forBlock['controls_if'] = (
+  block: Blockly.Block,
+  generator: Blockly.Generator,
+): string => {
+  // If/elseif/else condition.
+  let n = 0;
+  let code = '';
+  if (generator.STATEMENT_PREFIX) {
+    // Automatic prefix insertion is switched off for this block.  Add manually.
+    code += generator.injectId(generator.STATEMENT_PREFIX, block);
+  }
+  do {
+    const conditionCode =
+      generator.valueToCode(block, 'IF' + n, Order.NONE) || 'false';
+    let branchCode = generator.statementToCode(block, 'DO' + n);
+    if (generator.STATEMENT_SUFFIX) {
+      branchCode =
+        generator.prefixLines(
+          generator.injectId(generator.STATEMENT_SUFFIX, block),
+          generator.INDENT,
+      ) + branchCode;
+    }
+    code +=
+      (n > 0 ? ' else ' : '') +
+      'if (' +
+      conditionCode +
+      ') {\n' +
+      branchCode +
+      '}';
+    n++;
+  } while (block.getInput('IF' + n));
+
+  if (block.getInput('ELSE') || generator.STATEMENT_SUFFIX) {
+    let branchCode = generator.statementToCode(block, 'ELSE');
+    if (generator.STATEMENT_SUFFIX) {
+      branchCode =
+        generator.prefixLines(
+          generator.injectId(generator.STATEMENT_SUFFIX, block),
+          generator.INDENT,
+      ) + branchCode;
+    }
+    code += ' else {\n' + branchCode + '}';
+  }
+  return code + '\n';
+};
+
+glslGenerator.forBlock['controls_ifelse'] = glslGenerator.forBlock['controls_if'];
+
+glslGenerator.forBlock['logic_compare'] = (
+  block: Blockly.Block,
+  generator: Blockly.Generator,
+): [string, Order] => {
+  // Comparison operator.
+  const OPERATORS = {
+    'EQ': '==',
+    'NEQ': '!=',
+    'LT': '<',
+    'LTE': '<=',
+    'GT': '>',
+    'GTE': '>=',
+  };
+  type OperatorOption = keyof typeof OPERATORS;
+  const operator = OPERATORS[block.getFieldValue('OP') as OperatorOption];
+  const order =
+    operator === '==' || operator === '!=' ? Order.EQUALITY : Order.RELATIONAL;
+  const argument0 = generator.valueToCode(block, 'A', order) || '0';
+  const argument1 = generator.valueToCode(block, 'B', order) || '0';
+  const code = getValue(argument0) + ' ' + operator + ' ' + getValue(argument1);
+  return [code, order];
+};
