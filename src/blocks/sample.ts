@@ -15,9 +15,7 @@ export const sampleBlock = defineBlock({
       name: 'SAMPLE_COORD_INPUT',
     }],
     colour: 160,
-    previousStatement: null,
     output: null,
-    nextStatement: null,
   }
 });
 

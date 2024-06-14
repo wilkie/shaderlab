@@ -12,9 +12,7 @@ export const lengthBlock = defineBlock({
       name: 'LENGTH_VECTOR_INPUT',
     }],
     colour: 160,
-    previousStatement: null,
     output: null,
-    nextStatement: null,
   }
 });
 

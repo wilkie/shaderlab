@@ -18,8 +18,12 @@ registerFieldColour();
 import { startBlock } from "./start";
 import { setColorBlock } from "./setColor";
 import { colorBlock } from "./color";
+import { currentColorBlock } from "./currentColor";
 import { sampleBlock } from "./sample";
 import { lengthBlock } from "./length";
+import { normalizeBlock } from "./normalize";
+import { truncateBlock } from "./vectors";
+import { mixBlock } from "./mix";
 import { textureBlock } from "./texture";
 import { uvBlock } from "./uv";
 import { timeBlock } from "./time";
@@ -29,17 +33,28 @@ export const toolbox: ToolboxDefinition = {
   contents: [
     {
       kind: "category",
-      name: "Category 2",
+      name: "Basic",
       categorystyle: "logic_category",
       contents: [
         startBlock,
         setColorBlock,
         colorBlock,
+        currentColorBlock,
         sampleBlock,
-        lengthBlock,
         textureBlock,
         uvBlock,
         timeBlock,
+      ],
+    },
+    {
+      kind: "category",
+      name: "Vector",
+      categorystyle: "logic_category",
+      contents: [
+        lengthBlock,
+        normalizeBlock,
+        truncateBlock,
+        mixBlock,
       ],
     },
     /*
@@ -60,7 +75,7 @@ export const toolbox: ToolboxDefinition = {
     // You can add/remove specific stock block categories here
     // or remove this line to disable all stock blocks
     ...includeStockCategories([
-      //StockCategory.Logic,
+      StockCategory.Logic,
       //StockCategory.Loops,
       StockCategory.Math,
       //StockCategory.Text,
