@@ -4,6 +4,8 @@ import { glslGenerator } from '../generators/glslGenerator'
 
 import { getWorkspace } from 'libprotolab/blockly/workspace/workspace'
 
+import * as Blockly from "blockly";
+
 export const startBlock = defineBlock({
   type: "start",
   jsGenerator: (_b, _g) => {return '';},
