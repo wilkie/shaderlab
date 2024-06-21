@@ -23,6 +23,7 @@ import { sampleBlock } from "./sample";
 import { lengthBlock } from "./length";
 import { normalizeBlock } from "./normalize";
 import { polarizeBlock } from "./polarize";
+import { cartesianizeBlock } from "./cartesianize";
 import { centerBlock } from "./center";
 import { truncateBlock, buildVec2Block, buildVec3Block, buildVec4Block, rotateBlock } from "./vectors";
 import { mixBlock } from "./mix";
@@ -58,6 +59,7 @@ export const toolbox: ToolboxDefinition = {
         lengthBlock,
         normalizeBlock,
         polarizeBlock,
+        cartesianizeBlock,
         centerBlock,
         truncateBlock,
         buildVec2Block,

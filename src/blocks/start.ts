@@ -14,7 +14,10 @@ export const startBlock = defineBlock({
   }
 });
 
-glslGenerator.forBlock['start'] = (block, generator) => {
+glslGenerator.forBlock['start'] = (
+  block: Blockly.Block,
+  generator: Blockly.Generator,
+): string => {
   // The initial GLSL code
   const nextBlock =
     block.nextConnection && block.nextConnection.targetBlock();
@@ -38,6 +41,15 @@ glslGenerator.forBlock['start'] = (block, generator) => {
 vec2 polarize(vec2 uv) {
   vec2 centered = (uv - 0.5) * 2.0;
   return vec2(length(centered), atan(centered.y, centered.x));
+}
+`
+  }
+
+  if (workspace.getBlocksByType('cartesianize').length > 0) {
+    functions += `
+vec2 cartesianize(vec2 polar) {
+  vec2 centered = vec2(cos(polar.x), sin(polar.x)) * polar.y;
+  return (centered / 2.0) + 0.5;
 }
 `
   }
